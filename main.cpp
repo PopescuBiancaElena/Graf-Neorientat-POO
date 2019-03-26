@@ -22,6 +22,7 @@ public:
     friend istream& operator>>(istream&, Graph&);
     friend ostream& operator<<(ostream&, const Graph&);
     friend Graph operator+(const Graph&, const Graph&);
+    friend bool operator==(const Graph&, const Graph&);
     void Parcurgere_Latime();
     void Parcurgere_Adancime();
     void Matrice_Drumuri();
@@ -270,6 +271,22 @@ Graph operator+(const Graph& matrice1, const Graph& matrice2)
 
 }
 
+bool operator==(const Graph& matrice1, const Graph& matrice2)
+{
+    int i, j;
+
+    if(matrice1.noduri != matrice2.noduri)
+        return false;
+    if(matrice1.muchii != matrice2.muchii)
+        return false;
+    for(i = 0; i < matrice1.noduri; i++)
+        for(j = 0; j < matrice1.muchii; j++)
+            if(matrice1.copie[i][j] != matrice2.copie[i][j])
+                return false;
+
+    return true;
+}
+
 int main()
 {
     int n, i;
@@ -304,6 +321,17 @@ int main()
             Graph graf3;
             graf3 = graph[k] + graph[l];
         }
+    g<<endl;
+    g<<"Egalitatea a doua matrici: ";
+    g<<endl;
+    for(k = 0; k < n; k++)
+    {
+        for(l = k+1; l < n; l++)
+            if(graph[k] == graph[l])
+                g<<"Cele doua sunt egale!";
+            else
+                g<<"Cele doua nu sunt egale";
+    }
 
     f.close();
     g.close();
