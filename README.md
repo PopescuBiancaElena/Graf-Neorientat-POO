@@ -1,4 +1,4 @@
-## Graph_ex15_poo
+## Graf Neorientat
 #### Cerinta:
 #### clasa graf neorientat sa contina metode pentru:  
 #### - citirea grafului, care sa supraincarce operatorul >>;
